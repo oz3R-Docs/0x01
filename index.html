@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Stats</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <script>
+        function updateData() {
+            $.getJSON('/static/data.json', function(data) {
+                $('#playerElo').text(data.playerElo);
+                $('#win').text(data.win);
+                $('#lose').text(data.lose);
+                $('#winPercentage').text(data.winPercentage);
+                $('#lastMatch').text(data.lastMatch);
+                $('#levelIcon').attr('src', data.pics.levelIcon);
+                $('#lastMatchIcon').attr('src', data.pics.lastMatchIcon);
+            });
+        }
+        setInterval(updateData, 1000);
+    </script>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Archivo Black', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .stat {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            margin-left: 15px;
+        }
+        .stat img {
+            width: 60px;
+            height: 60px;
+        }
+        .stat p, .stat h2 {
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        p {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        #lastMatch {
+            font-size: 16px;
+        }
+        #lastMatchIcon {
+            width: 15px;
+            height: 15px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="stat">
+        <img id="levelIcon" src="static/pics/default.png" alt="Player Icon"/>
+        <div class="container">
+            <h2>RATING</h2>
+            <p>ELO: <span id="playerElo">N/A</span></p>
+            <p>Win: <span id="win">N/A</span> Lose: <span id="lose">N/A</span> (<span id="winPercentage">N/A</span>%)</p>
+            <p><span id="lastMatch">N/A</span>
+                <img id="lastMatchIcon" src="" alt=""/></p>
+        </div>
+    </div>
+</body>
+</html>

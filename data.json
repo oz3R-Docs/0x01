@@ -1,0 +1,11 @@
+{
+    "playerElo": 1295,
+    "win": 25,
+    "lose": 19,
+    "winPercentage": 57,
+    "lastMatch": "LAST MATCH: -24PTS",
+    "pics": {
+        "lastMatchIcon": "static/pics/redArrow.png",
+        "levelIcon": "static/pics/6.png"
+    }
+}
